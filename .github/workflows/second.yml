@@ -1,0 +1,24 @@
+name: Second
+on: push
+jobs:
+  jobs1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: first job
+        run: date
+  jobs2:
+    runs-on: windows-latest
+    steps:
+      - name: second job
+        run: date
+  jobs3:
+    runs-on: macos-latest
+    steps:
+      - name: third job
+        run: date
+  jobs4:
+    needs: [jobs1, jobs2, jobs3]
+    runs-on: windows-latest
+    steps:
+      - name: fourth job
+        run: date
